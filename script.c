@@ -4,14 +4,14 @@
 // Frank Snelling, 14/9/23
 
 void switch_no(int *a, int *b){
-  // program switches two integers passed as arguments
+  // function switches two integers passed as arguments
   int temp = *a;
   *a = *b;
   *b = temp;
 }
 
 void print_array(int array[], int size){
-  // program prints an array of integers
+  // function prints an array of integers
   printf("\n");
   for (int i = 0; i < size; i++){
     printf("%d  ", array[i]);
@@ -20,12 +20,18 @@ void print_array(int array[], int size){
 }
 
 void bubble_sort(int array[], int size) {
-  // program uses the bubble sort method to sort numbers
+  // function uses the bubble sort method to sort numbers
+  int any_changes;
   for (int i = 0; i < size; i++) { // iterate through each element
+  any_changes = 0;
     for (int j = i + 1; j < size; j++) { // iterate through each element AFTER i
       if (array[j] > array[i]) {
         switch_no(&array[i], &array[j]); // switch numbers if latter is greater than former
+        any_changes++;
       }
+    }
+    if (any_changes == 0) {
+      return;
     }
   }
 }
